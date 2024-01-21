@@ -11,7 +11,6 @@ import User from "../models/User.js";
 import { HttpError, sendEmail } from "../helpers/index.js";
 
 import { ctrlWrapper } from "../decorators/index.js";
-import { log } from "console";
 
 const avatarsPath = path.resolve("public", "avatars");
 
@@ -142,6 +141,7 @@ const update = async (req, res) => {
   const { _id } = req.user;
   const result = await User.findByIdAndUpdate(_id, req.body);
   if (!result) {
+    // eslint-disable-next-line no-undef
     throw HttpError(404, `Contact with id=${id} not found`);
   }
 

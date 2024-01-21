@@ -27,6 +27,8 @@ const getById = async (req, res) => {
   const { _id: owner } = req.user;
   const result = await Contact.findOne({ _id, owner });
   if (!result) {
+
+    // eslint-disable-next-line no-undef
     throw HttpError(404, `Contact with id=${id} not found`);
   }
 
@@ -45,6 +47,7 @@ const updateById = async (req, res) => {
   const { _id: owner } = req.user;
   const result = await Contact.findOneAndUpdate({ _id, owner }, req.body);
   if (!result) {
+    // eslint-disable-next-line no-undef
     throw HttpError(404, `Contact with id=${id} not found`);
   }
 
@@ -56,6 +59,7 @@ const deleteById = async (req, res) => {
   const { _id: owner } = req.user;
   const result = await Contact.findOneAndDelete({ _id, owner });
   if (!result) {
+    // eslint-disable-next-line no-undef
     throw HttpError(404, `Contact with id=${id} not found`);
   }
 
